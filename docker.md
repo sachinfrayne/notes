@@ -28,6 +28,12 @@ EOF
 sudo docker network create --ipv6 --subnet "2001:db8:1::/64" bridge6
 ```
 
+## list all the images available in a remote repo
+
+```
+skopeo list-tags docker://docker.elastic.co/elasticsearch/elasticsearch
+```
+
 ## memory
 
 ```bash
