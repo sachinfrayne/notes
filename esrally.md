@@ -49,6 +49,8 @@ tee /path/to/.rally/benchmarks/tracks/custom/track_name/auth.json <<- 'EOF'
 }
 EOF
 
+In `hosts.json`, each `"host"` value must be a hostname or IP only (do not prefix with `https://` or `http://`). Rally builds the URL using `use_ssl` from `auth.json`.
+
 tee /path/to/.rally/benchmarks/tracks/custom/track_name/hosts.json <<- 'EOF'
 {
   "default": [
@@ -57,5 +59,5 @@ tee /path/to/.rally/benchmarks/tracks/custom/track_name/hosts.json <<- 'EOF'
 }
 EOF
 
-docker run -v /path/to/.rally:/rally/.rally/ --platform linux/amd64 elastic/rally esrally race -track-path=/rally/.rally/benchmarks/tracks/custom/track_name --pipeline=benchmark-only --target-hosts="/rally/.rally/benchmarks/tracks/custom/track_name/hosts.json" --client-options="/rally/.rally/benchmarks/tracks/custom/track_name/auth.json"
+docker run -v /path/to/.rally:/rally/.rally/ --platform linux/amd64 elastic/rally esrally race --track-path=/rally/.rally/benchmarks/tracks/custom/track_name --pipeline=benchmark-only --target-hosts="/rally/.rally/benchmarks/tracks/custom/track_name/hosts.json" --client-options="/rally/.rally/benchmarks/tracks/custom/track_name/auth.json"
 ```
